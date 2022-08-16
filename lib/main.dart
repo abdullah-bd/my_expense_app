@@ -29,18 +29,15 @@ class MyHomePage extends StatelessWidget {
         title: const Text('My Expense App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Column(
-            children: [
-              Container(
-                width: double.infinity,
-                child: Card(
-                  color: Colors.blue,
-                  child: Text('Chart!'),
-                  elevation: 5,
-                ),
-              ),
-            ],
+          Container(
+            width: double.infinity,
+            child: Card(
+              color: Colors.blue,
+              child: Text('Chart!'),
+              elevation: 5,
+            ),
           ),
           Card(
             elevation: 5,
