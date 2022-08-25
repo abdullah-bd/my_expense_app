@@ -45,7 +45,8 @@ class MyHomePage extends StatelessWidget {
         title: const Text('My Expense App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -55,11 +56,12 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            elevation: 5,
-            child: Container(
-              child: Text('List!'),
-            ),
+          Column(
+            children: transactions.map((tx) {
+              return Card(
+                  child: Text(tx.title)
+              );
+            }).toList(),
           ),
         ],
       ),
