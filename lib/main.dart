@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_expense_app/models/transaction.dart';
+import 'package:my_expense_app/widgets/new_transaction.dart';
 import 'package:my_expense_app/widgets/transaction_list.dart';
+import 'package:my_expense_app/widgets/user_transactions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,8 +27,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  String? titleInput;
-  String? amountInput;
+
   
 
   @override
@@ -47,38 +48,7 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            elevation: 5,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
-                    onChanged: (value) {
-                      titleInput = value;
-                    },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Amount'),
-                    onChanged: (value) {
-                      amountInput = value;
-                    },
-                  ),
-                  FlatButton(
-                    child: Text('Add Transaction'),
-                    textColor: Colors.purple,
-                    onPressed: () {
-                      print(titleInput);
-                      print(amountInput);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          TransactionList(),
+          UserTransations(),
         ],
       ),
     );
