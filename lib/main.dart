@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:my_expense_app/models/transaction.dart';
-import 'package:my_expense_app/widgets/new_transaction.dart';
-import 'package:my_expense_app/widgets/transaction_list.dart';
 import 'package:my_expense_app/widgets/user_transactions.dart';
 
 void main() {
@@ -27,9 +23,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
