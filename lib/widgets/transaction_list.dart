@@ -27,7 +27,7 @@ class TransactionList extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple, width: 2)),
                   child: Text(
-                    '\$${tx.amount}',
+                    '\$${tx.amount.toStringAsFixed(2)}',
                     style: TextStyle(
                       color: Colors.purple,
                       fontSize: 20,
@@ -56,7 +56,6 @@ class TransactionList extends StatelessWidget {
               ],
             ),
           );
-
         },
         itemCount: transactions.length,
       ),
