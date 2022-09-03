@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_expense_app/widgets/user_transactions.dart';
+import 'package:my_expense_app/widgets/new_transaction.dart';
+import 'package:my_expense_app/widgets/transaction_list.dart';
+
+import 'models/transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +25,52 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> transactions = [
+    Transaction(
+      id: 't1',
+      title: 'New Shoes',
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Weekly Groceries',
+      amount: 16.53,
+      date: DateTime.now(),
+    ),
+  ];
+
+  void _startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: NewTransaction(_addTransaction),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
+  }
+
+  void _addTransaction(String title, double amount) {
+    final newTx = Transaction(
+      title: title,
+      amount: amount,
+      date: DateTime.now(),
+      id: DateTime.now().toString(),
+    );
+    setState(() {
+      transactions.add(newTx);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +79,7 @@ class MyHomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -43,24 +90,21 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: Card(
+              child: const Card(
                 color: Colors.blue,
-                child: Text('Chart!'),
                 elevation: 5,
+                child: Text('Chart!'),
               ),
             ),
-            UserTransations(),
+
+            TransactionList(transactions),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-
-        onPressed: () {
-
-
-        },
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }
