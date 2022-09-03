@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -53,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (_) {
           return GestureDetector(
             onTap: () {},
-            child: NewTransaction(_addTransaction),
             behavior: HitTestBehavior.opaque,
+            child: NewTransaction(_addTransaction),
           );
         });
   }
@@ -96,7 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('Chart!'),
               ),
             ),
-
             TransactionList(transactions),
           ],
         ),
